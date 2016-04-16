@@ -1,11 +1,14 @@
+#Note: you must set the Build Environment to OSX - false and Ubuntu 14.04 via the Circle Web UI
 machine:
   python:
     version: pypy-2.2.1
 dependencies:
   pre:
-    - curl -sL https://gist.github.com/kylef/5c0475ff02b7c7671d2a/raw/621ef9b29bbb852fdfd2e10ed147b321d792c1e4/swiftenv-install.sh | bash
-    - . ~/.swiftenv/init
+    - eval "$(curl -sL https://gist.githubusercontent.com/kylef/5c0475ff02b7c7671d2a/raw/02090c7ede5a637b76e6df1710e83cd0bbe7dcdf/swiftenv-install.sh)"
+    - swift build --fetch # clones all dependencies
+    - rm -rf Packages/*/Tests
     - swift build
+    - swift build --configuration release
 test:
   override:
     - swift test
