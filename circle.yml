@@ -1,10 +1,10 @@
 #Note: you must set the Build Environment to OSX - false and Ubuntu 14.04 via the Circle Web UI
-machine:
-  python:
-    version: pypy-2.2.1
+# machine:
+#   python:
+#     version: pypy-2.2.1
 dependencies:
   pre:
-    - apt-get install clang libicu-dev
+    - sudo apt-get install clang libicu-dev
     - eval "$(curl -sL https://gist.githubusercontent.com/kylef/5c0475ff02b7c7671d2a/raw/02090c7ede5a637b76e6df1710e83cd0bbe7dcdf/swiftenv-install.sh)"
     - echo 'export SWIFTENV_ROOT="$HOME/.swiftenv"' >> ~/.bashrc
     - echo 'export PATH="$SWIFTENV_ROOT/bin:$PATH"' >> ~/.bashrc
